@@ -1,0 +1,67 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+        classpath 'au.com.dius:pact-jvm-provider-gradle_2.11:3.3.6'
+    }
+}
+
+plugins {
+    id "au.com.dius.pact" version "3.3.6"
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'au.com.dius.pact'
+
+jar {
+    baseName = 'coffee-api'
+    version =  '0.1.0'
+}
+repositories {
+
+    mavenCentral()
+
+}
+
+dependencies {
+
+    compile 'org.springframework.boot:spring-boot-starter-parent:1.4.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE'
+    compile 'org.slf4j:slf4j-api:1.7.7'
+    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE'
+
+}
+//
+//pact {
+//
+//    serviceProviders {
+//        provider1 {
+//            protocol = 'http'
+//            host = 'localhost'
+//            port = 8080
+//            path = '/'
+//            hasPactWith('coffee-order-sdk') {
+//                pactFile = file('/Users/ramyaravindranath/workspace/personal/coffee-order-client/target/pacts/coffee-order-sdk-coffee-order-api.json')
+//
+//            }
+//
+//            hasPactWith('coffee-order-sdk') {
+//                pactFile = file('/Users/ramyaravindranath/workspace/personal/coffee-order-client/target/pacts/get-coffee-order-sdk-coffee-order-api.json')
+//            }
+//        }
+//
+//    }
+//
+//}
+
+bootRun {
+    systemProperties = System.properties
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.2.1'
+}
