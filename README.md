@@ -1,6 +1,7 @@
-# dius-mentor_ramya-coffee-api
+#coffee-api
 
 Sample Spring-boot application
 
 REST api for taking coffee orders
 
+# Coffee-api
